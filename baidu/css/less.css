@@ -1,6 +1,6 @@
 .container {
   width: 1000px;
-  height: auto;
+  height: 100%;
   margin: auto;
 }
 .container > .row {
@@ -15,7 +15,7 @@
   clear: both;
 }
 .container-fluid {
-  width: 100px;
+  width: 100%;
   margin: auto;
 }
 .container-fluid:before,
