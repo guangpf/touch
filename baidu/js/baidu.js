@@ -2,6 +2,12 @@ $(function(){
     var h=$(window).height();
     var num=0;
     var flag=true;
+    $(".fullpage").mousedown(function(e){
+        e.preventDefault()
+    })
+    $(".fullpage").mousemove(function(e){
+        e.preventDefault()
+    })
     touch.on("body","swipeup",$(".fullpage"),function(){
         if(!flag){
             return;
