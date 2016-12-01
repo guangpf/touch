@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fullpage.min.js"></script>
+    <script src="js/jquery.easings.min.js"></script>
+    <script src="js/scrolloverflow.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.fullpage.css">
+</head>
+<style>
+    html,body,h1,h2,h3,h4,h5,h6,ol,ul,li{
+        padding:0;
+        margin:0;
+        list-style:none;
+        font-family: "microsoft yahei", "黑体";
+    }
+  .section:nth-child(1){
+      background:url(img/section1.jpg) no-repeat;
+      background-size:cover;
+  }
+  .section:nth-child(2){
+      background:url(img/section2.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(3){
+      background:url(img/section3.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(4){
+      background:url(img/section4.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(5){
+      background:url(img/section5.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(6){
+      background:url(img/section6.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(7){
+      background:url(img/section7.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(8){
+      background:url(img/section8.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(9){
+      background:url(img/section9.jpg);
+      background-size:cover;
+
+  }
+  .section:nth-child(10){
+      background:url(img/section10.jpg);
+      background-size:cover;
+
+  }
+    .section{
+        width:100%;
+        height:100%;
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+
+    .bg11{
+        background:url(img/bg11.png);
+        width:100%;
+        height:100%;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    .bg12{
+        background:url(img/bg12.png) no-repeat;
+        background-size:cover;
+        position:absolute;
+        width:100%;
+        height:392px;
+        left:0;
+        bottom:-392px;
+        transition:all 1.7s;
+        opacity:0;
+    }
+    .bg13{
+        background:url(img/bg13.png) no-repeat;
+        position:absolute;
+        width:100%;
+        height:377px;
+        left:0;
+        bottom:-377px;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg12{
+        bottom:90px;
+        transition-delay:0.7s;
+        opacity:1;
+    }
+    .active .bg13{
+        bottom:0;
+        opacity:1;
+    }
+    .group{
+        width:554px;
+        height:176px;
+        position:absolute;
+        top:25%;
+        left:30%;
+        color:#fff;
+        text-align: center;
+        transform:scale(0.5,0.5) rotate(360deg);
+        opacity:0;
+        transition:all 1s;
+    }
+    .group h1{
+        color:#fff;
+        font-size:50px;
+        font-family: "叶根友毛笔行书2.0版";
+    }
+    .group h2{
+        color:#fff;
+        font-size:40px;
+        font-family: "叶根友毛笔行书2.0版";
+        line-height: 80px;
+    }
+    .active .group{
+        transform:scale(1,1) rotate(0deg);
+        opacity:1;
+    }
+    .mail{
+        width:375px;
+        height:26px;
+        background:url(img/logo.png);
+        position:absolute;
+        left:35%;
+        top:-26px;
+        transition:all 1s;
+    }
+    .active .mail{
+        top:20px;
+    }
+    .p{
+        color:#fff;
+        width:600px;
+        height:200px;
+        font-size:14px;
+        position:absolute;
+        left:35%;
+        top:50%;
+        opacity:0;
+        transition:all 2s;
+    }
+    .active .p{
+        opacity:0.7;
+        transition-delay:2.5s;
+    }
+    .bg21{
+        background:url(img/bg21.png) no-repeat;
+        width:819px;
+        height:250px;
+        position:absolute;
+        left:-100%;
+        top:40%;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg21{
+        left:-3%;
+        opacity:1;
+    }
+    .bg22{
+        background:url(img/bg22.png)no-repeat;
+        width:819px;
+        height:299px;
+        position:absolute;
+        bottom:70px;
+        right:-100%;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg22{
+        right:-53%;
+        opacity:1;
+    }
+    .bg23{
+        background:url(img/bg23.png)no-repeat;
+        width:819px;
+        height:325px;
+        position:absolute;
+        left:10%;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg23{
+        bottom:15%;
+        opacity:1;
+    }
+   .section2 strong{
+        color:#748A9E;
+        font-size:24px;
+        position:absolute;
+        left:30%;
+        top:100px;
+       transform:scale(0.5,0.5) translate(200px,0);
+       transition:all 1s;
+       opacity:0;
+    }
+   .active strong{
+       transition-delay:0.5s;
+       transform:scale(1,1) translate(0,0);
+       opacity:1;
+   }
+
+    .section2 h3{
+        width:512px;
+        height:45px;
+        background:url(img/t2.png);
+        position:absolute;
+        left:30%;
+        top:160px;
+        transform:scale(0.5,0.5);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active  h3{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+    .section2 p{
+        width:510px;
+        color:#727F8C;
+        position:absolute;
+        left:30%;
+        top:200px;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .p1{
+        transition-delay:1.7s;
+        opacity:1;
+    }
+
+
+    .bg31{
+        width:892px;
+        height:472px;
+        position:absolute;
+        background:url(img/bg31.png) no-repeat;
+        right:50px;;
+        bottom:80px;
+    }
+    .bg32{
+        width:322px;
+        height:143px;
+        position:absolute;
+        background:url(img/bg32.png)no-repeat;
+        left:50%;
+        bottom:0;
+    }
+    .bg33{
+        width:441px;
+        height:380px;
+        position:absolute;
+        background:url(img/bg33.png)no-repeat;
+        right:-100%;
+        bottom:0;
+        z-index:2;
+        opacity:0;
+        transition:all 1s;
+    }
+    .active .bg33{
+        right:16%;
+        opacity:1;
+    }
+    .section3 strong{
+        color:#748A9E;
+        font-size:24px;
+        position:absolute;
+        left:30%;
+        top:100px;
+        transform:scale(0.5,0.5) translate(200px,0);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active  strong{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+    .section3 h3{
+        width:512px;
+        height:45px;
+        background:url(img/t3.png);
+        position:absolute;
+        left:30%;
+        top:160px;
+        transform:scale(0.5,0.5);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active  h3{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+    .p3{
+        color:#fff;
+        width:430px;
+        position:absolute;
+        left:-100%;
+        top:50%;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .p3{
+        left:10%;
+        opacity:1;
+    }
+    .bg41{
+        width:100%;
+        height:372px;
+        background:url(img/bg41.png) no-repeat;
+        position:absolute;
+        left:0;
+        bottom:-100%;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg41{
+        bottom:15%;
+        opacity:1;
+    }
+    .bg42{
+        width:100%;
+        height:449px;
+        background:url(img/bg42.png) no-repeat;
+        position:absolute;
+        left:0;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg42{
+        transition-delay:0.7s;
+        bottom:15%;
+    }
+    .bg43{
+        width:100%;
+        height:449px;
+        background:url(img/bg43.png) 50% 0 no-repeat;
+        position:absolute;
+        left:0;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg43{
+        bottom:15%;
+    }
+
+    .section4 strong{
+        color:#748A9E;
+        font-size:24px;
+        position:absolute;
+        left:30%;
+        top:100px;
+        transform:scale(0.5,0.5) translate(200px,0);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active strong{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+
+    .section4 h3{
+        width:512px;
+        height:45px;
+        background:url(img/t4.png);
+        position:absolute;
+        left:30%;
+        top:160px;
+        transform:scale(0.5,0.5);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active  h3{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+    .section4 p{
+        width:510px;
+        color:#727F8C;
+        position:absolute;
+        left:30%;
+        top:200px;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .p4{
+        transition-delay:1.7s;
+        opacity:1;
+    }
+    .bg51,.bg52,.bg53,.bg54{
+        width:208px;
+        position:absolute;
+        /*left:50%;*/
+        bottom:20%;
+        color:#fff;
+        transition:all 1s;
+    }
+    .bg51{
+        background:url(img/bg51.png) 50% 0 no-repeat;
+        height:285px;
+        left:-100%;
+        transition:all 1s;
+
+    }
+    .active .bg51{
+        transition-delay:0.7s;
+        left:1%;
+    }
+    .bg51 h4{
+        margin-top:200px;
+    }
+    .bg52 h4 {
+        margin-top: 235px;
+    }
+    .bg53 h4{
+        margin-top:260px;
+    }
+    .bg54 h4{
+        margin-top:260px;
+    }
+    .bg51 h4,.bg52 h4,.bg53 h4,.bg54 h4{
+        font-size:20px;
+    }
+    .bg51 p,.bg52 p,.bg53 p,.bg54 p{
+        font-size:14px;
+    }
+    .bg52{
+        height:338px;
+        background:url(img/bg52.png) 50% 0 no-repeat;
+        left:-100%;
+    }
+    .active .bg52{
+        left:25%;
+    }
+    .bg53{
+        height:338px;
+        background:url(img/bg53.png) 50% 0 no-repeat;
+        right:-100%;
+        transition:all 1s;
+    }
+    .active .bg53{
+        right:25%;
+    }
+    .bg54{
+        height:338px;
+        background:url(img/bg54.png) 50% 0 no-repeat;
+        right:-100%;
+    }
+    .active .bg54{
+        transition-delay:0.7s;
+        right:1%;
+    }
+    .section5 strong,.section6 strong,.section7 strong,.section8 strong,.section9 strong{
+        color:#748A9E;
+        font-size:24px;
+        position:absolute;
+        left:30%;
+        top:100px;
+        transform:scale(0.5,0.5) translate(200px,0);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active strong{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+
+    .section5 h3,.section6 h3,.section7 h3,.section8 h3,.section9 h3{
+        width:512px;
+        height:45px;
+        background:url(img/t5.png);
+        position:absolute;
+        left:30%;
+        top:160px;
+        transform:scale(0.5,0.5);
+        transition:all 1s;
+        opacity:0;
+    }
+    .active  h3{
+        transition-delay:0.5s;
+        transform:scale(1,1) translate(0,0);
+        opacity:1;
+    }
+    .bg61{
+        width:100%;
+        height:545px;
+        position:absolute;
+        left:0;top:-100%;
+        background:url(img/bg61.png) no-repeat;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg61{
+        top:0;
+        opacity:1;
+    }
+    .bg62{
+        width:597px;
+        height:284px;
+        position:absolute;
+        left:-100%;bottom:20%;
+        background:url(img/bg62.png) no-repeat;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .bg62{
+        left:5%;
+        opacity:1;
+    }
+    .section6 h3{
+        background:url(img/t6.png);
+    }
+    .tex6{
+       width:447px;
+        position:absolute;
+        top:50%;
+        right:-100%;
+        transition:all 1s;
+    }
+    .active .tex6{
+        right:10%;
+    }
+    .tex6 p{
+        margin-bottom:17px;
+        color:#5c7970;
+    }
+    .tex7{
+        width:420px;
+        position:absolute;
+        bottom:-100%;
+        right:10%;
+        color:#fff;
+        transition:all 1s;
+    }
+    .active .tex7{
+        transition-delay: 0.7s;
+       bottom:40%;
+    }
+    .bg71{
+        background:url(img/bg71.png);
+        width:699px;
+        height:201px;
+        position:absolute;
+        left:0;bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg71{
+        bottom:35%;
+    }
+    .bg72{
+        background:url(img/bg72.png);
+        width:182px;
+        height:206px;
+        position:absolute;
+        left:40%;bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg72{
+        transition-delay: 0.7s;
+        bottom:30%;
+    }
+    .bg73{
+        background:url(img/bg73.png) no-repeat;
+        width:651px;
+        height:231px;
+        position:absolute;
+        left:8%;bottom:22%;
+    }
+    .bg74{
+        background:url(img/bg74.png) no-repeat;
+        width:100%;
+        height:231px;
+        position:absolute;
+        left:0;bottom:-20px;
+    }
+    .section7 h3{
+        background:url(img/t7.png) no-repeat;
+    }
+    .p8{
+        width:565px;
+        color:#727F8C;
+        position:absolute;
+        left:30%;
+        top:35%;
+        opacity:0;
+        transition:all 2s;
+    }
+    .active .p8{
+        opacity:1;
+    }
+    .section8 h3{
+        background:url(img/t8.png)no-repeat;
+    }
+    .bg81{
+        width:100%;
+        height:215px;
+        background:url(img/bg81.png) no-repeat;
+        position:absolute;
+        left:0;
+        bottom:100px;
+    }
+    .bg82{
+        width:164px;
+        height:117px;
+        background:url(img/bg82.png)no-repeat;
+        position:absolute;
+        left:420px;;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg82{
+        bottom:250px;
+    }
+    .bg83{
+        width:70px;
+        height:29px;
+        background:url(img/bg83.png)no-repeat;
+        position:absolute;
+        left:18%;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg83{
+        transition-delay:0.7s;
+        bottom:55%;
+    }
+    .bg84{
+        width:43px;
+        height:26px;
+        background:url(img/bg84.png)no-repeat;
+        position:absolute;
+        left:10%;
+        bottom:-100%;
+        transition:all 1s;
+    }
+    .active .bg84{
+        transition-delay:1s;
+        bottom:65%;
+    }
+    .bg91,.bg92,.bg93{
+        top:20%;
+    }
+    .bg91 p,.bg92 p,.bg93 p{
+        text-align: center  ;
+        color:#fff;
+    }
+    .bg91 p,.bg92 p,.bg93 p{
+        margin-top:350px;
+    }
+    .bg92 p{
+        margin-top:350px;
+    }
+    .bg91{
+        width:340px;
+        height:434px;
+        position:absolute;
+        left:-100%;
+        background:url(img/bg91.png)no-repeat;
+        opacity:0;
+        transition:all 1s;
+    }
+    .active .bg91{
+        opacity:1;
+        left:0;
+    }
+    .bg92{
+        width:340px;
+        height:434px;
+        position:absolute;
+        left:35%;
+        background:url(img/bg92.png)no-repeat;
+        opacity:0;
+        transition:all 1s;
+    }
+    .active .bg92{
+        opacity:1;
+    }
+    .bg93{
+        width:340px;
+        height:434px;
+        position:absolute;
+        right:-100%;
+        background:url(img/bg93.png)no-repeat;
+        transition:all 1s;
+    }
+    .active .bg93{
+        right:0;
+    }
+    .section9 h3{
+        background:url(img/t9.png);
+    }
+    .bg101{
+        background:url(img/bg101.png) no-repeat;
+        width:100%;
+        height:100%;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    .bg102{
+        background:url(img/bg102.png)50% 0 no-repeat;
+        width:100%;
+        height:79px;
+        position:absolute;
+        left:0;
+        top:20%;
+        transform:scale(0.5,0.5);
+        opacity:0;
+        transition:all 1s;
+    }
+    .bg103{
+        background:url(img/bg103.png)50% 0 no-repeat;
+        width:100%;
+        height:37px;
+        position:absolute;
+        left:0;
+        top:40%;
+        transform:scale(0.5,0.5);
+        opacity:0;
+        transition:all 1s;
+    }
+    .active .bg102,.active .bg103{
+        transition-delay: 0.7s;
+        transform:scale(1,1);
+        opacity:1;
+    }
+    .go{
+        width:254px;
+        height:70px;
+        background:url(img/btn.png);
+        position:absolute;
+        bottom:-100%;
+        left:40%;
+        transition:all 1s;
+        opacity:0;
+    }
+    .active .go{
+        bottom:20%;
+        opacity:1;
+    }
+
+</style>
+<script>
+   $(function(){
+       $("#fullpage").fullpage({
+           verticalCentered: false,
+           anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10'],
+           navigation: true,
+           navigationTooltips: ['首页', '视觉', '交互', '皮肤', '功能', '待办邮件', '联系人邮件', '科技', '连接易信', '马上体验'],
+           onleave:function(index){
+               alert(index)
+               $(".group").css({
+                   transform:"scale(1,1)",
+                   opacity:1
+               })
+           }
+       })
+   })
+
+</script>
+<body>
+<div id="fullpage">
+    <div class="section section1">
+            <div class="bg11"></div>
+            <div class="bg12"></div>
+            <div class="bg13"></div>
+        <div class="group">
+            <h1>The Website For GPF</h1>
+            <h2>静而思，动则至</h2>
+        </div>
+        <div class="mail">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </div>
+        <p class="p">网易邮箱6.0版——2014年最具创意气质的重量级新邮箱，重生光华，为之瞩目。唯美 <br>的视觉设计和视觉化交互，无可替代的独创动态情景皮肤，多项国内创意产品专利技术，<br>成就无与伦比的出众品味，无可比拟的美妙体验。</p>
+    </div>
+    <div class="section section2">
+        <div class="bg21"></div>
+        <div class="bg22"></div>
+        <div class="bg23"></div>
+        <strong>[视觉·简]</strong>
+        <h3></h3>
+        <p class="p1">秉承网易邮箱经典的清新简洁的设计风格，邮箱 6.0 版带来全新一代的设计理念，更追求极致唯美的视觉设计、传承更多人文和艺术底蕴，华丽蜕变，带来更舒服更爽心悦目的视觉享受。</p>
+    </div>
+    <div class="section section3">
+        <div class="bg31"></div>
+        <div class="bg32"></div>
+        <div class="bg33"></div>
+        <strong>[ 视觉化交互设计 ]</strong>
+        <h3></h3>
+        <p class="p3">邮箱 6.0 版采用了全新的视觉化交互设计，通过对界面的整体风格设计、重要信息的视觉化处理以及元素本身的视觉传达优化，来实现产品流程设计和交互行为塑造。从视觉的角度出发，让用户无需多想，直接通过感官与产品进行交互。</p>
+    </div>
+    <div class="section section4">
+        <div class="bg41"></div>
+        <div class="bg42"></div>
+        <div class="bg43"></div>
+        <strong>[ 动态情景皮肤 ]</strong>
+        <h3></h3>
+        <p class="p4">国内首创动态情景皮肤，可以随着早晚时光，季节主题的变幻而自动切换，实现了在邮箱里也能感受天气和心情的变化，带来完全不同的页面体验并且呈现最佳视觉感受，还特别针对原有邮箱皮肤的对比度和色彩进行了微调，减少视觉疲劳感。</p>
+    </div>
+    <div class="section section5">
+        <div class="bg51">
+            <h4>新语音视频邮件</h4>
+            <p>写信不再枯燥！在线录制和播放声音和视频邮件，比单纯的文字邮件更感性、更方便，更好玩。</p>
+        </div>
+        <div class="bg52">
+            <h4>虚拟场景写信模式</h4>
+            <p>写信不再枯燥！在线录制和播放声音和视频邮件，比单纯的文字邮件更感性、更方便，更好玩。<br>变得更为有趣和生动。</p>
+        </div>
+        <div class="bg53">
+            <h4>独创智能体检</h4>
+            <p>网易邮箱6.0版帮你关注邮箱安全，提醒你及时清理邮件，打<br>造轻量级邮箱。</p>
+        </div>
+        <div class="bg54">
+            <h4>全新多帐号关联</h4>
+            <p>一键关联和切换多个网易邮箱，同时对于重要的邮箱帐号进行<br>密码验证保护。</p>
+        </div>
+        <strong>[ 功能·创 ]</strong>
+        <h3></h3>
+    </div>
+    <div class="section section6">
+        <div class="bg61"></div>
+        <div class="bg62"></div>
+        <strong>[ 待办邮件 ]</strong>
+        <h3></h3>
+        <div class="tex6">
+            <p>独家首创邮件管理方式：待办邮件 <br>采用日程的方式第一时间分配和提醒邮件！</p>
+            <p>对于需要后续处理的重要邮件，如果正忙来不及处理和回复，只需设置为待办邮件，在待办时间到期时，邮件会在文件夹置顶提示或采用短信方式提醒。</p>
+            <p>如此高效迅速处理邮件，让邮件处理过程变成更轻松和快捷。</p>
+        </div>
+    </div>
+    <div class="section section7">
+        <div class="bg71"></div>
+        <div class="bg72"></div>
+        <div class="bg73"></div>
+        <div class="bg74"></div>
+        <strong>[ 联系人邮件 ]</strong>
+        <h3></h3>
+        <div class="tex7">
+            <p>独家首创邮件管理方式：待办邮件 <br>采用日程的方式第一时间分配和提醒邮件！邮箱6.0版带来一种极其简便的方式，管理你和联系人的 <br>邮件往来，帮助你精准定位到以联系人为维度的邮件列表。</p>
+            <p>同时支持以联系组方式来管理邮件，方便以群或相同关系 <br>的群体间的邮件管理，比如：同学组，客户组，公司组等。</p>
+        </div>
+    </div>
+    <div class="section section8">
+        <div class="bg81"></div>
+        <div class="bg82"></div>
+        <div class="bg83"></div>
+        <div class="bg84"></div>
+        <strong>[ 科技.聚 ]</strong>
+        <h3></h3>
+        <p class="p8">邮箱6.0版带来“飞”一般的访问体验，速度提升达30%。采用全新base基础库bjs，更加轻量级，性能更加优化，完全兼容国内用户使用的所有浏览器，以及基于"多核"多线程的核心js引擎，性能和访问速度大幅提升。</p>
+    </div>
+    <div class="section section9">
+        <strong>[ 让沟通更有趣 ]</strong>
+        <h3></h3>
+        <div class="bg91">
+            <p>易信扫描二维码即可登录网易 <br>邮箱6.0版，“扫一扫”让邮 <br>箱登录更方便。</p>
+        </div>
+        <div class="bg92">
+            <p>登录邮箱后，可直接使用Web <br>易信和好友聊天，还可以发图片，让聊天更有趣。 <br></p>
+        </div>
+        <div class="bg93">
+            <p>易信和邮箱新邮件同步提醒， <br>在易信可以直接查看和回复 <br>邮件，手机收发邮件更快捷。</p>
+        </div>
+    </div>
+    <div class="section section10">
+        <div class="bg101"></div>
+        <div class="bg102"></div>
+        <div class="bg103"></div>
+        <a href="" class="go"></a>
+    </div>
+</div>
+</body>
+</html>
