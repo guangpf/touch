@@ -18,6 +18,7 @@ $(function(){
             num=les-1;
             return;
         }
+        $(".check .list").removeClass("active").eq(num).addClass("active");
         $(".fullpage").css("marginTop",-num*h);
         flag=false;
     });
@@ -30,6 +31,7 @@ $(function(){
            num=0;
             return;
         }
+        $(".check .list").removeClass("active").eq(num).addClass("active");
         $(".fullpage").css("marginTop",-num*h);
         flag=false;
     })
@@ -99,7 +101,7 @@ $(function(){
     })
 /*去除bug*/
 $(window).resize(function(){
-     h=$(window).height();
+     //h=$(window).height();
     var clientW=$(window).width();
     $(".fullpage").css("marginTop",-num*h);
     if(clientW>1000){
@@ -117,8 +119,49 @@ $(window).resize(function(){
         flag2=true;
     }
 })
+    /*选项卡*/
+    $(".check .list").click(function(){
+        num=$(this).index();
+        $(".check .list").removeClass("active").eq(num).addClass("active");
+        $(".fullpage").css("marginTop",-num*h);
+    });
+    $(".arrow").each(function(a,obj){
+        $(obj).click(function(){
+            num=a+1;
+            $(".check .list").removeClass("active").eq(num).addClass("active");
+            $(".fullpage").css("marginTop",-(num)*h);
+        })
+    })
+    /*滚轮*/
+  $(".fullpage").mousewheel(function(){
+      if(!flag){
+          return;
+      }
+      num++;
+      var les=$("section").length;
+      if(num==les){
+          num=les-1;
+          return;
+      }
+          $(".check .list").removeClass("active").eq(num).addClass("active");
+          $(".fullpage").css("marginTop",-num*h);
+      flag=false;
+  },
+      function(){
 
+          if(!flag){
+              return;
+          }
+          num--;
+          if(num==-1){
+              num=0;
+              return;
+          }
+          $(".check .list").removeClass("active").eq(num).addClass("active");
+          $(".fullpage").css("marginTop",-num*h);
+          flag=false;
 
+  })
 
 
 })
